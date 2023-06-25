@@ -1,0 +1,22 @@
+let's break it down into its main components:
+
+1. The outer loop runs for `T` iterations, where `T` is the number of test cases.
+
+2. In the `solve` function, the following steps contribute to the time complexity:
+
+   - Counting the occurrences of each number in `nums` takes O(N) time, where N is the length of the array.
+   - Constructing the `cands` list takes O(N) time since it loops over the count array.
+   - The nested loop, which iterates over the range of `N`, has a worst-case time complexity of O(N^2).
+   - Inside the nested loop, calculating the longest increasing subsequence (`hi` and `lo`) using the `lis` function takes O(N log N) time.
+   
+   Therefore, the overall time complexity of the `solve` function is O(N^2 * log N).
+
+3. The main loop that iterates over the test cases has a time complexity of O(T * N^2 * log N).
+
+Considering the constraints given in the problem description, where the sum of `N` over all test cases doesn't exceed 200, we can approximate the time complexity as follows:
+
+- If we assume the worst-case scenario, where `N` is close to the upper bound of 200, the time complexity is approximately O(T * 200^2 * log 200), which can be simplified to O(T * 10^6).
+
+- If the actual values of `N` are much smaller than the upper bound, the time complexity will be lower accordingly.
+
+Therefore, the overall time complexity of the provided code is approximately O(T * 10^6), where `T` is the number of test cases.
