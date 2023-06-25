@@ -1,0 +1,25 @@
+Let's brek down the code and explain the algorithm step by step:
+
+1. Importing libraries and setting up variables:
+   - The code imports the `io`, `os`, and `sys` modules.
+   - It defines the `input` function to read input from the standard input.
+   - The code imports the `bisect_right` function from the `bisect` module.
+   - It sets `INF` (infinity) to a floating-point value.
+   - The `lis` function is defined to calculate the length of the longest increasing subsequence in a list of numbers.
+   - The `solve` function is defined to solve the given problem using the inputs.
+
+2. Reading inputs and solving the problem:
+   - The code reads the number of test cases using `int(input())` and iterates over the range of test cases using `for _ in range(int(input()))`.
+   - For each test case, it reads the values of `N` (the number of elements), `K` (a threshold value), and `nums` (a list of numbers).
+   - It initializes variables `count`, `cands`, and `res` for counting the occurrences of numbers, storing candidates, and storing the final result, respectively.
+   - The code populates the `count` list with the count of occurrences for each number in `nums`.
+   - It checks if any number in `nums` has a count greater than `K`. If so, it returns `[-1]` since it's not possible to satisfy the conditions.
+   - The code populates the `cands` list with repeated numbers from `nums` based on their count.
+   - It iterates over the range of `N` to fill the `res` list with valid numbers:
+     - For each index `i`, it iterates over the `cands` list using the enumerate function to get the index `j` and the candidate `cand`.
+     - It calculates the lengths of the longest increasing subsequence (`hi`) and the longest increasing subsequence in the reverse order (`lo`) by combining parts of `res` and `cands`.
+     - If the value of `K` is between or equal to `lo` and `hi`, it assigns `cand` to the `i`-th index of `res` and updates the `cands` list by removing `cand` from it.
+     - It breaks the inner loop and continues to the next iteration of the outer loop.
+   - Finally, the code prints the elements of `res` separated by spaces using `' '.join(map(str, out))`.
+
+In summary, the algorithm aims to solve a problem by finding a valid sequence `res` that satisfies certain conditions. It checks the count of occurrences for each number in the input list and constructs a candidate list based on those counts. Then, it iteratively selects numbers from the candidate list to form the sequence `res` by considering the constraints defined by the longest increasing subsequences.
